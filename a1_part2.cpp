@@ -1,4 +1,7 @@
 // Assignment 1: Part 2
+// Team members: 1. Hui Zhang 40170679
+//               2. ...............
+//               3. ...............
 #include <stdio.h>
 #include <iostream>
 #include <cmath>
