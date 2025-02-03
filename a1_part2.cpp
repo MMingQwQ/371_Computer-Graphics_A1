@@ -190,7 +190,6 @@ int main(){
             }
             case 4: {
                 cout << "Exiting..." << endl;
-                delete p1, p2, p3,triangle;
                 break;
             }
             default: {
