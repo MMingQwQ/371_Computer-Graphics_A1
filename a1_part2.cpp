@@ -20,6 +20,13 @@ class Point {
         // Constructor
         Point(int x = 0, int y = 0, int z = 0) : x(x), y(y), z(z) {}
 
+        //Destrustor
+        ~Point() {
+            cout << "Point destroyed: ";
+            display();
+            cout << endl;
+        }
+
         // Translate the point by d units in the given axis
         int translate(int d, char axis) {
             if (axis == 'x')
@@ -44,12 +51,7 @@ class Point {
         int getY() const { return y; }
         int getZ() const { return z; }
 
-        //Destrustor
-        ~Point() {
-            cout << "Point destroyed: ";
-            display();
-            cout << endl;
-        }
+        
 
 };
 
@@ -77,6 +79,14 @@ class Triangle {
     // Constructor
     Triangle(Point* p1, Point* p2, Point* p3) : vertex_1(p1), vertex_2(p2), vertex_3(p3) {}
 
+    // Destructor
+    ~Triangle(){
+        cout << "Triangle destroyed."<< endl;
+        delete vertex_1;
+        delete vertex_2;
+        delete vertex_3;
+    }
+
     //Translate method
     void translate(int d, char axis) {
         if (vertex_1) vertex_1->translate(d, axis);
@@ -96,16 +106,21 @@ class Triangle {
         int x2 = vertex_2->getX(), y2 = vertex_2->getY(), z2 = vertex_2->getZ();
         int x3 = vertex_3->getX(), y3 = vertex_3->getY(), z3 = vertex_3->getZ();
 
-        int ux = x2 - x1, uy = y2 - y1, uz = z2 - z1;
-        int vx = x3 - x1, vy = y3 - y1, vz = z3 - z1;
+        // Vectors u and v
+    int ux = x2 - x1, uy = y2 - y1, uz = z2 - z1;
+    int vx = x3 - x1, vy = y3 - y1, vz = z3 - z1;
 
-        int cx = uy * vz - uz * vy;
-        int cy = uz * vx - ux * vz;
-        int cz = ux * vy - uy * vx;
+    // Cross product of u and v
+    int cx = uy * vz - uz * vy;
+    int cy = uz * vx - ux * vz;
+    int cz = ux * vy - uy * vx;
 
-        double magnitude = 0.5 * sqrt(cx * cx + cy * cy + cz * cz);
+    // Magnitude of the cross product vector
+    double magnitude = sqrt(cx * cx + cy * cy + cz * cz);
 
-        return magnitude/2.0;
+    // Area of the triangle
+    return magnitude / 2.0;
+
     }
 
     void display() const {
@@ -119,13 +134,7 @@ class Triangle {
         }
     }
 
-    // Destructor
-    ~Triangle(){
-        cout << "Triangle destroyed."<< endl;
-        delete vertex_1;
-        delete vertex_2;
-        delete vertex_3;
-    }
+    
 
 };
 
@@ -177,9 +186,11 @@ int main(){
             }
             case 3: {
                 cout <<"Area of the triangle: "<<triangle.calArea() << endl;
+                break;
             }
             case 4: {
                 cout << "Exiting..." << endl;
+                delete p1, p2, p3,triangle;
                 break;
             }
             default: {

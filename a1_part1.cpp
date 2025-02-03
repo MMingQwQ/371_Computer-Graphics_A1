@@ -9,7 +9,14 @@ using namespace std;
 
 // Function to create a dynamic array
 int* createArray(int size) {
-    return new int[size];  // Dynamically allocate memory for the array
+    int* arr = nullptr;
+    try {
+        arr = new int[size];
+    } catch (const std::bad_alloc& e) {
+        std::cerr << "Memory allocation failed: " << e.what() << std::endl;
+        exit(1);
+    }
+    return arr;
 }
 
 // Function to initialize the array with values from 0 to size-1
@@ -30,6 +37,7 @@ void printArray(int* arr, int size) {
 // Function to delete the dynamically allocated array
 void deleteArray(int* arr) {
     delete[] arr;  // Deallocate memory
+    arr = nullptr; // Set the pointer to nullptr
 }
 
 int main() {
