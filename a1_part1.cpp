@@ -1,7 +1,7 @@
 // Assignment 1: Part 1
 // Team members: 1. Hui Zhang 40170679
-//               2. Mingming Zhang 40258080
-//               3. ...............
+//               2. Zexu Hao 40233332
+//               3. Mingming Zhang 40258080
 
 #include <iostream>
 
