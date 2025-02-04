@@ -161,8 +161,8 @@ int main(){
     int choice;
     do{
         cout <<"\nMenu:"<< endl;
-        cout << "1. Translate the triangle" << endl;
-        cout << "2. Display Triagnle Coordinates" << endl;
+        cout << "1. Translate the Triangle" << endl;
+        cout << "2. Display Triangle  Coordinates" << endl;
         cout << "3. Calculate Triangle Area" << endl;
         cout << "4. Exit" << endl;
         cout << "Enter your choice: ";
